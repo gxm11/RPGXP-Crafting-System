@@ -1,7 +1,11 @@
+# python 相关
 venv/
-apikey
+__pycache__/
+# Game 相关
 Audio/
 Graphics/
+screenshot/
 Game.exe
+# aider相关
+apikey
 aider*
-screenshot.png
