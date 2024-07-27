@@ -52,11 +52,15 @@ class Scene_Craft
     @number_window.update
     # 指令窗口激活的情况下: 调用 update_command
     if @command_window.active
+      @craft_list_window.visible = false
+      @craft_status_window.visible = false
       update_command
       return
     end
     # 合成列表窗口激活的情况下: 调用 update_craft_list
     if @craft_list_window.active
+      @craft_list_window.visible = true
+      @craft_status_window.visible = true
       update_craft_list
       return
     end
