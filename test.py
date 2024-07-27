@@ -11,13 +11,13 @@ import sys
 pyautogui.PAUSE = 1
 pydirectinput.PAUSE = 0.1
 workspace = os.getcwd()
-
-print("pydirectinput.pause:", pydirectinput.PAUSE)
-print("workspace:", workspace)
-
 task = 'default'
 if len(sys.argv) >= 2:
     task = sys.argv[1]
+
+print("pydirectinput.pause:", pydirectinput.PAUSE)
+print("workspace:", workspace)
+print("task:", task)
 
 # 截图相关
 game_width, game_height = 640, 480 + 48
@@ -34,7 +34,9 @@ def capture(filename=None):
     pyautogui.screenshot(f"{workspace}/screenshot/{filename}.png", shot_area)
 
 # 启动 Game.exe
-proc = subprocess.Popen(["Game.exe", "debug"], cwd=workspace, stdout=sys.stdout, stderr=sys.stderr)
+env = os.environ.copy()
+env["AUTOTASK"] = task
+proc = subprocess.Popen(["Game.exe", "debug"], cwd=workspace, stdout=sys.stdout, stderr=sys.stderr, env=env)
 
 time.sleep(2)
 
@@ -42,25 +44,26 @@ time.sleep(2)
 pyautogui.hotkey('ctrl', 'space')
 
 # 游戏中
-for cmd in tqdm.tqdm(autotasks.data[task], desc=task):
-    if proc.poll() is not None:
-        break
+if task in autotasks.data:
+    for cmd in tqdm.tqdm(autotasks.data[task], desc=task):
+        if proc.poll() is not None:
+            break
 
-    if cmd == 'capture':
-        capture()
-        continue
-    if cmd.startswith('sleep,'):
-        wait_time = float(cmd.split(',')[1])
-        time.sleep(wait_time)
-        continue
+        if cmd == 'capture':
+            capture()
+            continue
+        if cmd.startswith('sleep,'):
+            wait_time = float(cmd.split(',')[1])
+            time.sleep(wait_time)
+            continue
 
-    key = cmd
-    pydirectinput.press(key)
+        key = cmd
+        pydirectinput.press(key)
 
 # 结束
 if proc.poll() is None:
     capture("latest")
     proc.terminate()
-    proc.wait()    
+    proc.wait()
 else:
     print("process terminated.")
