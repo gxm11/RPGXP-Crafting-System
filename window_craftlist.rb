@@ -52,12 +52,40 @@ class Window_CraftList < Window_Selectable
     self.contents.fill_rect(rect, Color.new(0, 0, 0, 0))
     bitmap = RPG::Cache.icon(item.icon_name)
     self.contents.blt(x, y + 4, bitmap, Rect.new(0, 0, 24, 24))
+    self.contents.font.color = can_craft?(recipe) ? normal_color : disabled_color
     self.contents.draw_text(x + 28, y, 180, 32, item.name)
     self.contents.draw_text(x + 228, y, 32, 32, recipe["target"]["number"].to_s, 2)
+    self.contents.font.color = normal_color
+  end
+
+  # 检查是否可以合成
+  def can_craft?(recipe)
+    recipe["materials"].all? do |material|
+      case material["kind"]
+      when :item
+        $game_party.item_number(material["id"]) >= material["number"]
+      when :weapon
+        $game_party.weapon_number(material["id"]) >= material["number"]
+      when :armor
+        $game_party.armor_number(material["id"]) >= material["number"]
+      end
+    end
   end
 
   # 刷新帮助文本
   def update_help
     @help_window.set_text(self.recipe == nil ? "" : self.recipe["target"]["name"])
+  end
+
+  # 更新
+  def update
+    super
+    if Input.trigger?(Input::C)
+      recipe = @recipes[self.index]
+      if recipe && !can_craft?(recipe)
+        $game_system.se_play($data_system.buzzer_se)
+        return
+      end
+    end
   end
 end
