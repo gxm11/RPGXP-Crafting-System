@@ -2,7 +2,7 @@
 class Window_CraftNumber < Window_Base
   # 初始化对像
   def initialize
-    super((640 - 300) / 2, (480 - 100) / 2, 300, 100)
+    super(170, 190, 300, 100)
     self.back_opacity = 255
     self.contents = Bitmap.new(width - 32, height - 32)
     @recipe = nil
@@ -36,9 +36,9 @@ class Window_CraftNumber < Window_Base
     end
     draw_item_name(item, 4, 16)
     self.contents.font.color = normal_color
-    self.contents.draw_text(240, 16, 32, 32, "×")
-    self.contents.draw_text(276, 16, 24, 32, @number.to_s, 2)
-    self.cursor_rect.set(272, 16, 32, 32)
+    self.contents.draw_text(140, 16, 32, 32, "×")
+    self.contents.draw_text(176, 16, 24, 32, @number.to_s, 2)
+    self.cursor_rect.set(172, 16, 32, 32)
   end
 
   # 刷新画面
