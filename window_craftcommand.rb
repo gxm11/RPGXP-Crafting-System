@@ -21,7 +21,7 @@ class Window_CraftCommand < Window_Selectable
 
   # 描绘项目
   def draw_item(index)
-    x = 4 + index * 213
-    self.contents.draw_text(x, 0, 128, 32, @commands[index])
+    x = (index * 213) + ((213 - self.contents.text_size(@commands[index]).width) / 2)
+    self.contents.draw_text(x, 0, 213, 32, @commands[index])
   end
 end
