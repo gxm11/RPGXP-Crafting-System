@@ -89,6 +89,8 @@ class Scene_Craft
         @craft_list_window.set_recipes($craft_recipes.select { |recipe| recipe["target"]["kind"] == :item })
         @craft_list_window.active = true
         @craft_status_window.visible = true
+        @craft_list_window.visible = true
+        @craft_status_window.visible = true
       when 1  # 装备
         # 演奏确定 SE
         $game_system.se_play($data_system.decision_se)
@@ -97,11 +99,15 @@ class Scene_Craft
         @craft_list_window.set_recipes($craft_recipes.select { |recipe| recipe["target"]["kind"] == :weapon || recipe["target"]["kind"] == :armor })
         @craft_list_window.active = true
         @craft_status_window.visible = true
+        @craft_list_window.visible = true
+        @craft_status_window.visible = true
       when 2  # 取消
         # 演奏确定 SE
         $game_system.se_play($data_system.decision_se)
         # 切换到主菜单
         $scene = Scene_Map.new
+        @craft_list_window.visible = false
+        @craft_status_window.visible = false
       end
       return
     end
