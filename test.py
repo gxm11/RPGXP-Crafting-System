@@ -44,6 +44,10 @@ time.sleep(2)
 pyautogui.hotkey('ctrl', 'space')
 
 # 游戏中
+if os.path.exists("error.log"):
+    with open("error.log", "w") as f:
+        pass
+
 if task in autotasks.data:
     for cmd in tqdm.tqdm(autotasks.data[task], desc=task):
         if proc.poll() is not None:

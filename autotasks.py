@@ -24,3 +24,13 @@ s += ['down', 'enter', 'right', 'enter']
 # 离开商店并打开物品窗口
 s += ['esc', 'esc', 'esc']
 s += ['enter', 'sleep,1']
+
+# ---------------------------------------------------------
+# craft 测试
+# ---------------------------------------------------------
+# 进入Scene_Map
+s = data['craft'] = []
+s += ['enter', 'sleep,0.5']
+# 进入Scene_Craft
+s += ['right', 'sleep,0.5', 'right', 'sleep,0.5', 'enter']
+s += ['sleep,1']
