@@ -9,10 +9,10 @@ class Scene_Craft
     # 生成合成列表窗口
     @craft_list_window = Window_CraftList.new
     @craft_list_window.active = false
-    @craft_list_window.visible = true  # 始终显示
+    @craft_list_window.visible = false  # 默认不显示
     # 生成合成状态窗口
     @craft_status_window = Window_CraftStatus.new
-    @craft_status_window.visible = true  # 始终显示
+    @craft_status_window.visible = false  # 默认不显示
     # 生成数量输入窗口
     @number_window = Window_CraftNumber.new
     @number_window.active = false
@@ -73,6 +73,15 @@ class Scene_Craft
 
   # 刷新画面 (指令窗口激活的情况下)
   def update_command
+    # 根据选择的命令更新帮助窗口的内容
+    case @command_window.index
+    when 0  # 物品
+      @help_window.set_text("选择物品合成")
+    when 1  # 装备
+      @help_window.set_text("选择装备合成")
+    when 2  # 取消
+      @help_window.set_text("返回主菜单")
+    end
     # 按下 B 键的情况下
     if Input.trigger?(Input::B)
       # 演奏取消 SE

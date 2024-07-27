@@ -23,5 +23,14 @@ class Window_CraftCommand < Window_Selectable
   def draw_item(index)
     x = 8 + (index * 213)
     self.contents.draw_text(x, 0, 213, 32, @commands[index], 0)
+    # 添加命令的说明文本
+    case index
+    when 0
+      self.contents.draw_text(x, 32, 213, 32, "合成物品")
+    when 1
+      self.contents.draw_text(x, 32, 213, 32, "合成装备")
+    when 2
+      self.contents.draw_text(x, 32, 213, 32, "取消合成")
+    end
   end
 end
