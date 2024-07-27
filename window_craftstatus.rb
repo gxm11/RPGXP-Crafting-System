@@ -2,7 +2,7 @@
 class Window_CraftStatus < Window_Base
   # 初始化对像
   def initialize
-    super(368, 128, 272, 352)
+    super(320, 128, 272, 352)
     self.contents = Bitmap.new(width - 32, height - 32)
     @recipe = nil
     refresh

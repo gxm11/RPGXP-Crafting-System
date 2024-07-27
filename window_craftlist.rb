@@ -2,7 +2,7 @@
 class Window_CraftList < Window_Selectable
   # 初始化对像
   def initialize
-    super(0, 128, 368, 352)
+    super(0, 128, 320, 352)
     self.contents = Bitmap.new(width - 32, height - 32)
     @recipes = []
     refresh
