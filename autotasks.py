@@ -32,5 +32,6 @@ s += ['enter', 'sleep,1']
 s = data['craft'] = []
 s += ['enter', 'sleep,0.5']
 # 进入Scene_Craft
-s += ['right', 'sleep,0.5', 'right', 'sleep,0.5', 'enter']
-s += ['sleep,1']
+s += ['sleep,0.5', 'enter', 'sleep,0.5', 'esc']
+s += ['right', 'sleep,0.5', 'enter', 'sleep,0.5', 'esc']
+s += ['right', 'sleep,0.5', 'enter']

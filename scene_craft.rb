@@ -9,10 +9,10 @@ class Scene_Craft
     # 生成合成列表窗口
     @craft_list_window = Window_CraftList.new
     @craft_list_window.active = false
-    @craft_list_window.visible = false
+    @craft_list_window.visible = true  # 始终显示
     # 生成合成状态窗口
     @craft_status_window = Window_CraftStatus.new
-    @craft_status_window.visible = false
+    @craft_status_window.visible = true  # 始终显示
     # 生成数量输入窗口
     @number_window = Window_CraftNumber.new
     @number_window.active = false
@@ -88,7 +88,6 @@ class Scene_Craft
         @command_window.active = false
         @craft_list_window.set_recipes($craft_recipes.select { |recipe| recipe["target"]["kind"] == :item })
         @craft_list_window.active = true
-        @craft_list_window.visible = true
         @craft_status_window.visible = true
       when 1  # 装备
         # 演奏确定 SE
@@ -97,7 +96,6 @@ class Scene_Craft
         @command_window.active = false
         @craft_list_window.set_recipes($craft_recipes.select { |recipe| recipe["target"]["kind"] == :weapon || recipe["target"]["kind"] == :armor })
         @craft_list_window.active = true
-        @craft_list_window.visible = true
         @craft_status_window.visible = true
       when 2  # 取消
         # 演奏确定 SE
@@ -120,8 +118,6 @@ class Scene_Craft
       # 窗口状态转向初期模式
       @command_window.active = true
       @craft_list_window.active = false
-      @craft_list_window.visible = false
-      @craft_status_window.visible = false
       @craft_status_window.recipe = nil
       # 删除帮助文本
       @help_window.set_text("")
@@ -143,7 +139,6 @@ class Scene_Craft
       max = calculate_max_craft_quantity(@recipe)
       # 窗口状态转向数值输入模式
       @craft_list_window.active = false
-      @craft_list_window.visible = false
       @number_window.set(@recipe, max)
       @number_window.active = true
       @number_window.visible = true
@@ -161,7 +156,6 @@ class Scene_Craft
       @number_window.visible = false
       # 窗口状态转向合成列表模式
       @craft_list_window.active = true
-      @craft_list_window.visible = true
       return
     end
     # 按下 C 键的情况下
