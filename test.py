@@ -49,7 +49,7 @@ if os.path.exists("error.log"):
         pass
 
 if task in autotasks.data:
-    for cmd in tqdm.tqdm(autotasks.data[task], desc=task):
+    for cmd in tqdm.tqdm(autotasks.data[task], desc=task, ascii=True):
         if proc.poll() is not None:
             break
 

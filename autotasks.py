@@ -30,8 +30,11 @@ s += ['enter', 'sleep,1']
 # ---------------------------------------------------------
 # 进入Scene_Map
 s = data['craft'] = []
-s += ['enter', 'sleep,0.5']
+s += ['enter', 'sleep,0.5', 'capture']
 # 进入Scene_Craft
-s += ['sleep,0.5', 'enter', 'sleep,0.5', 'esc']
-s += ['right', 'sleep,0.5', 'enter', 'sleep,0.5', 'esc']
+s += ['sleep,0.5', 'enter', 'sleep,0.5', 'capture']
+s += ['enter', 'sleep,0.5', 'capture']
+s += ['esc', 'sleep,0.5', 'capture']
+# 其他菜单操作
+s += ['right', 'sleep,0.5', 'enter', 'sleep,0.5', 'capture', 'esc']
 s += ['right', 'sleep,0.5', 'enter']
