@@ -1,23 +1,19 @@
-seq = {"shop": [], "default": []}
-
-def input_sequence(key = "default"):
-    return seq[key]
-
+data = {}
 
 # ---------------------------------------------------------
 # default 测试
 # ---------------------------------------------------------
 # 进入Scene_Map
-s = seq['default']
-s += ['enter']
-s += ['wait']
+s = data['default'] = []
+s += ['enter', 'sleep,0.5']
+
 # ---------------------------------------------------------
 # shop 测试
 # ---------------------------------------------------------
 # 进入Scene_Map
-s = seq['shop']
+s = data['shop'] = []
 s += ['enter']
-s += ["capture"]
+s += ['capture']
 # 与上面的角色对话
 s += ['up', 'enter']
 # 选择“买”
@@ -26,6 +22,5 @@ s += ['enter']
 s += ['enter', 'right', 'right', 'enter']
 s += ['down', 'enter', 'right', 'enter']
 # 离开商店并打开物品窗口
-s += ["esc", "esc", "esc"]
-s += ["enter"]
-s += ["wait"]
+s += ['esc', 'esc', 'esc']
+s += ['enter', 'sleep,1']

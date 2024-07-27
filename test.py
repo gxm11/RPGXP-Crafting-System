@@ -1,20 +1,25 @@
+import autotasks
+
 import pyautogui
 import pydirectinput
-from test_config import input_sequence
 import os
 import tqdm
 import time
 import subprocess
 import sys
 
-workspace = os.getcwd()
 pyautogui.PAUSE = 1
 pydirectinput.PAUSE = 0.1
+workspace = os.getcwd()
+
+print("pydirectinput.pause:", pydirectinput.PAUSE)
+print("workspace:", workspace)
 
 task = 'default'
 if len(sys.argv) >= 2:
     task = sys.argv[1]
 
+# 截图相关
 game_width, game_height = 640, 480 + 48
 width, height = pyautogui.size()
 shot_area = (width // 2 - game_width // 2, height // 2 - game_height // 2 - 24, game_width, game_height)
@@ -33,33 +38,29 @@ proc = subprocess.Popen(["Game.exe", "debug"], cwd=workspace, stdout=sys.stdout,
 
 time.sleep(2)
 
-print("auto test start.")
-
 # 切换输入法（可选）
 pyautogui.hotkey('ctrl', 'space')
 
 # 游戏中
-if os.path.exists("error.log"):
-    os.remove("error.log")
-
-for key in tqdm.tqdm(input_sequence(task), desc=task):
-    if os.path.exists("error.log"):
-        print("error detected, exit.")
-        break
+for cmd in tqdm.tqdm(autotasks.data[task], desc=task):
     if proc.poll() is not None:
         break
 
-    if key == 'capture':
+    if cmd == 'capture':
         capture()
-    elif key == 'wait':
-        time.sleep(1)
-    else:
-        pydirectinput.press(key)
+        continue
+    if cmd.startswith('sleep,'):
+        wait_time = float(cmd.split(',')[1])
+        time.sleep(wait_time)
+        continue
 
+    key = cmd
+    pydirectinput.press(key)
+
+# 结束
 if proc.poll() is None:
     capture("latest")
     proc.terminate()
-    proc.wait()
-    print("auto test done.")
+    proc.wait()    
 else:
     print("process terminated.")
