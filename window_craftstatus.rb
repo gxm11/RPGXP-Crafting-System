@@ -45,7 +45,22 @@ class Window_CraftStatus < Window_Base
       end
       self.contents.font.color = normal_color
       self.contents.draw_text(4, y, 200, 32, mat_item.name)
-      self.contents.draw_text(224, y, 32, 32, material["number"].to_s, 2)
+      owned_number = case material["kind"]
+                     when :item
+                       $game_party.item_number(material["id"])
+                     when :weapon
+                       $game_party.weapon_number(material["id"])
+                     when :armor
+                       $game_party.armor_number(material["id"])
+                     end
+      text = "#{owned_number}/#{material["number"]}"
+      if owned_number < material["number"]
+        self.contents.font.color = crisis_color
+      else
+        self.contents.font.color = normal_color
+      end
+      self.contents.draw_text(224, y, 64, 32, text, 2)
+      self.contents.font.color = normal_color
       y += 32
     end
   end
