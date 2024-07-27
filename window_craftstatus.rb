@@ -45,7 +45,7 @@ class Window_CraftStatus < Window_Base
       end
       self.contents.font.color = normal_color
       self.contents.draw_text(4, y, 200, 32, mat_item.name)
-      self.contents.draw_text(204, y, 32, 32, material["number"].to_s, 2)
+      self.contents.draw_text(224, y, 32, 32, material["number"].to_s, 2)
       y += 32
     end
   end

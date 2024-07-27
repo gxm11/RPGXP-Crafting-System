@@ -53,7 +53,7 @@ class Window_CraftList < Window_Selectable
     bitmap = RPG::Cache.icon(item.icon_name)
     self.contents.blt(x, y + 4, bitmap, Rect.new(0, 0, 24, 24))
     self.contents.draw_text(x + 28, y, 180, 32, item.name)
-    self.contents.draw_text(x + 208, y, 32, 32, recipe["target"]["number"].to_s, 2)
+    self.contents.draw_text(x + 228, y, 32, 32, recipe["target"]["number"].to_s, 2)
   end
 
   # 刷新帮助文本
