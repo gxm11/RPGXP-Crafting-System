@@ -3,6 +3,7 @@ class Window_CraftNumber < Window_Base
   # 初始化对像
   def initialize
     super(170, 190, 300, 100)
+    self.z = 200  # 将 z 值调高 100
     self.back_opacity = 255
     self.contents = Bitmap.new(width - 32, height - 32)
     @recipe = nil
