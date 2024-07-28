@@ -38,7 +38,9 @@ class Window_CraftNumber < Window_Base
     draw_item_name(item, 4, 16)
     self.contents.font.color = normal_color
     self.contents.draw_text(172, 16, 32, 32, "×")
-    self.contents.draw_text(208, 16, 24, 32, @number.to_s, 2)
+    # Assuming @recipe["quantity"] is the number of items that can be crafted at once
+    display_number = @number * @recipe["quantity"]
+    self.contents.draw_text(208, 16, 24, 32, display_number.to_s, 2)
     self.cursor_rect.set(204, 16, 32, 32)
   end
 
