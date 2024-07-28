@@ -6,7 +6,7 @@
 
 ## 项目演示
 
-https://github.com/gxm11/RPGXP-Crafting-System/releases/download/v1.0/bandicam.2024-07-28.17-14-58-924.mp4
+[演示视频](https://github.com/gxm11/RPGXP-Crafting-System/releases/download/v1.0/bandicam.2024-07-28.17-14-58-924.mp4)
 
 ## 项目结构
 
