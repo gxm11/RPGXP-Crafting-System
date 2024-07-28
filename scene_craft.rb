@@ -200,24 +200,4 @@ class Scene_Craft
   # 计算可以最多合成的数量
 
   # 合成物品
-  def craft(recipe, quantity)
-    recipe["materials"].each do |material|
-      case material["kind"]
-      when :item
-        $game_party.lose_item(material["id"], material["number"] * quantity)
-      when :weapon
-        $game_party.lose_weapon(material["id"], material["number"] * quantity)
-      when :armor
-        $game_party.lose_armor(material["id"], material["number"] * quantity)
-      end
-    end
-    case recipe["target"]["kind"]
-    when :item
-      $game_party.gain_item(recipe["target"]["id"], recipe["target"]["number"] * quantity)
-    when :weapon
-      $game_party.gain_weapon(recipe["target"]["id"], recipe["target"]["number"] * quantity)
-    when :armor
-      $game_party.gain_armor(recipe["target"]["id"], recipe["target"]["number"] * quantity)
-    end
-  end
 end
