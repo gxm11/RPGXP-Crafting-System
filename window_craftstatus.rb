@@ -66,7 +66,7 @@ class Window_CraftStatus < Window_Base
                      when :armor
                        $game_party.armor_number(material["id"])
                      end
-      text = "#{owned_number}/#{material["number"]}"
+      text = "-#{material["number"]}/#{owned_number}"
       if owned_number < material["number"]
         self.contents.font.color = crisis_color
       else
