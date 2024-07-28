@@ -189,6 +189,8 @@ class Scene_Craft
       # 刷新各窗口
       @craft_list_window.refresh
       @craft_status_window.refresh
+      # 重新激活 window_craftlist
+      @craft_list_window.active = true
     end
   end
 
