@@ -99,7 +99,7 @@ class Scene_Craft
         $game_system.se_play($data_system.decision_se)
         # 窗口状态转向物品合成模式
         @command_window.active = false
-        @craft_list_window.set_recipes(Game_Craft::CRAFT_RECIPES.select { |recipe| recipe["target"]["kind"] == :item })
+        @craft_list_window.set_recipes($game_craft.recipes.select { |recipe| recipe["target"]["kind"] == :item })
         @craft_list_window.active = true
         @craft_status_window.visible = true
         @craft_list_window.visible = true
@@ -109,7 +109,7 @@ class Scene_Craft
         $game_system.se_play($data_system.decision_se)
         # 窗口状态转向装备合成模式
         @command_window.active = false
-        @craft_list_window.set_recipes(Game_Craft::CRAFT_RECIPES.select { |recipe| recipe["target"]["kind"] == :weapon || recipe["target"]["kind"] == :armor })
+        @craft_list_window.set_recipes($game_craft.recipes.select { |recipe| recipe["target"]["kind"] == :weapon || recipe["target"]["kind"] == :armor })
         @craft_list_window.active = true
         @craft_status_window.visible = true
         @craft_list_window.visible = true
