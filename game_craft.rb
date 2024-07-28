@@ -28,4 +28,18 @@ class Game_Craft
   def consume(kind, id, number)
     @materials << { "kind" => kind, "id" => id, "number" => number }
   end
+
+  # 检查是否可以合成
+  def can_craft?(recipe)
+    recipe["materials"].all? do |material|
+      case material["kind"]
+      when :item
+        $game_party.item_number(material["id"]) >= material["number"]
+      when :weapon
+        $game_party.weapon_number(material["id"]) >= material["number"]
+      when :armor
+        $game_party.armor_number(material["id"]) >= material["number"]
+      end
+    end
+  end
 end
