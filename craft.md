@@ -16,7 +16,7 @@
    - `window_craftnumber.rb`
    - `window_craftstatus.rb`
    - `init_craft.rb`
-   - `test_craft.rb`
+   - `test_craft.rb`（可选，仅供测试使用）
 
 2. 确保这些文件位于正确的目录结构中，通常是`Scripts`目录下。
 
