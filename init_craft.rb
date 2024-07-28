@@ -28,5 +28,12 @@ class Game_Party
       craft.consume :weapon, 1, 2
       craft.consume :item, 2, 2
     end
+
+    # 添加一个带有开关的配方
+    $game_craft.add_recipe do |craft|
+      craft.create :item, 3, 1
+      craft.consume :item, 1, 2
+      craft.switch 1  # 假设开关ID 1
+    end
   end
 end

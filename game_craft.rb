@@ -7,23 +7,32 @@ class Game_Craft
   end
 
   def recipes
-    $game_variables[@var_id]
+    $game_variables[@var_id].select do |recipe|
+      recipe["switch_id"].nil? || $game_switches[recipe["switch_id"]]
+    end
   end
 
   def add_recipe
     recipe = {}
     @target = nil
     @materials = []
+    @switch_id = nil
     yield(self)
     recipe["target"] = @target if @target
     recipe["materials"] = @materials if @materials
+    recipe["switch_id"] = @switch_id if @switch_id
     $game_variables[@var_id] << recipe
     @target = nil
     @materials = nil
+    @switch_id = nil
   end
 
   def create(kind, id, number)
     @target = { "kind" => kind, "id" => id, "number" => number }
+  end
+
+  def switch(switch_id)
+    @switch_id = switch_id
   end
 
   def consume(kind, id, number)
