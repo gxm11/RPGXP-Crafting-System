@@ -43,3 +43,7 @@ s += ['esc']
 s += ['right', 'enter', 'capture']
 # 离开装备合成
 s += 'esc right enter'.split()
+# 与左边的角色进行对话
+s += 'left enter down enter sleep,0.5 enter'.split()
+s += 'left enter sleep,0.5 enter sleep,0.5'.split()
+s += 'enter sleep,0.5 down down sleep,0.5 enter sleep,0.5 esc'.split()
