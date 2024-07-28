@@ -149,7 +149,7 @@ class Scene_Craft
       # 获取配方
       @recipe = @craft_list_window.recipe
       # 配方无效的情况下
-      if @recipe == nil || !@craft_list_window.can_craft?(@recipe)
+      if @recipe == nil || !$game_craft.can_craft?(@recipe)
         # 演奏冻结 SE
         $game_system.se_play($data_system.buzzer_se)
         return
