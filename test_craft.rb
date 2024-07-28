@@ -8,27 +8,21 @@ load "window_craftnumber.rb"
 load "window_craftstatus.rb"
 
 $game_craft = Game_Craft.new
-$game_craft.add_recipe({
-  "target" => { "kind" => :item, "id" => 1, "number" => 2 },
-  "materials" => [
-    { "kind" => :item, "id" => 2, "number" => 10 },
-    { "kind" => :item, "id" => 3, "number" => 5 }
-  ]
-})
-$game_craft.add_recipe({
-  "target" => { "kind" => :weapon, "id" => 2, "number" => 1 },
-  "materials" => [
-    { "kind" => :item, "id" => 2, "number" => 20 },
-    { "kind" => :weapon, "id" => 3, "number" => 10 }
-  ]
-})
-$game_craft.add_recipe({
-  "target" => { "kind" => :armor, "id" => 2, "number" => 1 },
-  "materials" => [
-    { "kind" => :item, "id" => 2, "number" => 20 },
-    { "kind" => :armor, "id" => 3, "number" => 10 }
-  ]
-})
+$game_craft.add_recipe do
+  create :item, 1, 2
+  consume :item, 2, 10
+  consume :item, 3, 5
+end
+$game_craft.add_recipe do
+  create :weapon, 2, 1
+  consume :item, 2, 20
+  consume :weapon, 3, 10
+end
+$game_craft.add_recipe do
+  create :armor, 2, 1
+  consume :item, 2, 20
+  consume :armor, 3, 10
+end
 
 class Interpreter
   def init_test
