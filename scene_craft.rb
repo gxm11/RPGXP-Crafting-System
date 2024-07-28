@@ -196,8 +196,4 @@ class Scene_Craft
       @craft_list_window.active = true
     end
   end
-
-  # 计算可以最多合成的数量
-
-  # 合成物品
 end
