@@ -188,7 +188,7 @@ class Scene_Craft
       @number_window.active = false
       @number_window.visible = false
       # 合成处理
-      craft_item(@recipe, @number_window.number)
+      $game_craft.craft(@recipe, @number_window.number)
       # 刷新各窗口
       @craft_list_window.refresh
       @craft_status_window.refresh
@@ -200,7 +200,7 @@ class Scene_Craft
   # 计算可以最多合成的数量
 
   # 合成物品
-  def craft_item(recipe, quantity)
+  def craft(recipe, quantity)
     recipe["materials"].each do |material|
       case material["kind"]
       when :item
