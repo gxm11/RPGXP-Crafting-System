@@ -8,6 +8,7 @@ class Scene_Craft
     @command_window = Window_CraftCommand.new
     # 生成合成列表窗口
     @craft_list_window = Window_CraftList.new
+    @craft_list_window.help_window = @help_window
     @craft_list_window.active = false
     @craft_list_window.visible = false  # 默认不显示
     # 生成合成状态窗口

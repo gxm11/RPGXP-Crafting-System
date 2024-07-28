@@ -59,6 +59,8 @@ class Window_CraftList < Window_Selectable
   end
 
 
+  attr_accessor :help_window
+
   # 刷新帮助文本
   def update_help
     if self.recipe
