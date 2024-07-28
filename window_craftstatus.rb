@@ -31,7 +31,7 @@ class Window_CraftStatus < Window_Base
       item = $data_armors[@recipe["target"]["id"]]
     end
     self.contents.font.color = system_color
-    self.contents.draw_text(4, 0, 200, 32, "目标道具")
+    self.contents.draw_text(4, 0, 200, 32, "创建")
     self.contents.font.color = normal_color
     self.contents.draw_text(4, 32, 200, 32, item.name)
     owned_number = case @recipe["target"]["kind"]
@@ -44,7 +44,7 @@ class Window_CraftStatus < Window_Base
                    end
     self.contents.draw_text(224, 32, 64, 32, owned_number.to_s, 2)
     self.contents.font.color = system_color
-    self.contents.draw_text(4, 64, 200, 32, "所需道具")
+    self.contents.draw_text(4, 64, 200, 32, "消耗")
     self.contents.font.color = normal_color
     y = 96
     @recipe["materials"].each do |material|
