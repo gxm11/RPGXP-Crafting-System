@@ -1,12 +1,13 @@
 class Game_Craft
-  CRAFT_RECIPES = []
-
-  def initialize
-    # Initialize method remains empty for now
+  def initialize(var_id)
+    @var_id = var_id
+    unless $game_variables[var_id].is_a?(Array)
+      $game_variables[var_id] = []
+    end
   end
 
   def recipes
-    CRAFT_RECIPES
+    $game_variables[@var_id]
   end
 
   def add_recipe
@@ -16,7 +17,7 @@ class Game_Craft
     yield(self)
     recipe["target"] = @target if @target
     recipe["materials"] = @materials if @materials
-    CRAFT_RECIPES << recipe
+    $game_variables[@var_id] << recipe
     @target = nil
     @materials = nil
   end

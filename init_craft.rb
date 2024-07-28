@@ -10,7 +10,7 @@ class Game_Party
     init_craft_initialize
 
     # 创建 $game_craft 对象
-    $game_craft = Game_Craft.new
+    $game_craft = Game_Craft.new(1)  # 假设使用变量ID 1来存储合成配方
 
     # 初始化合成配方
     $game_craft.add_recipe do |craft|
