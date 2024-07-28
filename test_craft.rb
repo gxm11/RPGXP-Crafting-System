@@ -11,7 +11,7 @@ class Interpreter
     return unless $DEBUG
 
     # 初始化合成配方
-    Scene_Craft::CRAFT_RECIPES = [
+    Game_Craft::CRAFT_RECIPES = [
       {
         "target" => { "kind" => :item, "id" => 1, "number" => 2 },
         "materials" => [
