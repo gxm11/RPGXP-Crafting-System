@@ -1,0 +1,2 @@
+
+# init_craft.rb
