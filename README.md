@@ -4,6 +4,10 @@
 
 本项目是为RPG Maker XP游戏开发的一个合成系统。该系统允许玩家在游戏中合成物品和装备，从而增强游戏体验。合成系统包括多个组件，如场景、窗口和游戏逻辑，它们协同工作以实现合成功能。
 
+## 项目演示
+
+https://github.com/gxm11/RPGXP-Crafting-System/releases/download/v1.0/bandicam.2024-07-28.17-14-58-924.mp4
+
 ## 项目结构
 
 项目主要由以下几个部分组成：
