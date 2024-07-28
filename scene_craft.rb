@@ -157,7 +157,7 @@ class Scene_Craft
       # 演奏确定 SE
       $game_system.se_play($data_system.decision_se)
       # 计算可以最多合成的数量
-      max = calculate_max_craft_quantity(@recipe)
+      max = $game_craft.calculate_max_craft_quantity(@recipe)
       # 窗口状态转向数值输入模式
       @craft_list_window.active = false
       @number_window.set(@recipe, max)
@@ -197,19 +197,6 @@ class Scene_Craft
   end
 
   # 计算可以最多合成的数量
-  def calculate_max_craft_quantity(recipe)
-    max_quantities = recipe["materials"].map do |material|
-      case material["kind"]
-      when :item
-        $game_party.item_number(material["id"]) / material["number"]
-      when :weapon
-        $game_party.weapon_number(material["id"]) / material["number"]
-      when :armor
-        $game_party.armor_number(material["id"]) / material["number"]
-      end
-    end
-    max_quantities.min
-  end
 
   # 合成物品
   def craft_item(recipe, quantity)
