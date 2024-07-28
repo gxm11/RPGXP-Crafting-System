@@ -86,9 +86,6 @@ class Window_CraftList < Window_Selectable
         return
       elsif recipe && $game_craft.can_craft?(recipe)
         $game_system.se_play($data_system.decision_se)
-        # 显示 Window_CraftNumber 的逻辑
-        # 这里需要确保只有在项可合成的情况下才执行显示逻辑
-        # 假设显示逻辑在其他地方实现，这里不做具体修改
       end
     end
   end
