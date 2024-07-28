@@ -11,5 +11,7 @@ class Game_Craft
 
   def add_recipe(recipe)
     CRAFT_RECIPES << recipe
+    @target = nil
+    @materials = nil
   end
 end
