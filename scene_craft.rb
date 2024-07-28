@@ -1,5 +1,28 @@
 # scene_craft.rb
 class Scene_Craft
+  CRAFT_RECIPES = [
+    {
+      "target" => { "kind" => :item, "id" => 1, "number" => 2 },
+      "materials" => [
+        { "kind" => :item, "id" => 2, "number" => 10 },
+        { "kind" => :item, "id" => 3, "number" => 5 }
+      ]
+    },
+    {
+      "target" => { "kind" => :weapon, "id" => 2, "number" => 1 },
+      "materials" => [
+        { "kind" => :item, "id" => 2, "number" => 20 },
+        { "kind" => :weapon, "id" => 3, "number" => 10 }
+      ]
+    },
+    {
+      "target" => { "kind" => :armor, "id" => 2, "number" => 1 },
+      "materials" => [
+        { "kind" => :item, "id" => 2, "number" => 20 },
+        { "kind" => :armor, "id" => 3, "number" => 10 }
+      ]
+    }
+  ]
   # 主处理
   def main
     # 生成帮助窗口
@@ -99,7 +122,7 @@ class Scene_Craft
         $game_system.se_play($data_system.decision_se)
         # 窗口状态转向物品合成模式
         @command_window.active = false
-        @craft_list_window.set_recipes($craft_recipes.select { |recipe| recipe["target"]["kind"] == :item })
+        @craft_list_window.set_recipes(Scene_Craft::CRAFT_RECIPES.select { |recipe| recipe["target"]["kind"] == :item })
         @craft_list_window.active = true
         @craft_status_window.visible = true
         @craft_list_window.visible = true
@@ -109,7 +132,7 @@ class Scene_Craft
         $game_system.se_play($data_system.decision_se)
         # 窗口状态转向装备合成模式
         @command_window.active = false
-        @craft_list_window.set_recipes($craft_recipes.select { |recipe| recipe["target"]["kind"] == :weapon || recipe["target"]["kind"] == :armor })
+        @craft_list_window.set_recipes(Scene_Craft::CRAFT_RECIPES.select { |recipe| recipe["target"]["kind"] == :weapon || recipe["target"]["kind"] == :armor })
         @craft_list_window.active = true
         @craft_status_window.visible = true
         @craft_list_window.visible = true
