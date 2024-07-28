@@ -52,16 +52,12 @@ class Window_CraftList < Window_Selectable
     self.contents.fill_rect(rect, Color.new(0, 0, 0, 0))
     bitmap = RPG::Cache.icon(item.icon_name)
     self.contents.blt(x, y + 4, bitmap, Rect.new(0, 0, 24, 24))
-    self.contents.font.color = can_craft?(recipe) ? normal_color : disabled_color
+    self.contents.font.color = $game_craft.can_craft?(recipe) ? normal_color : disabled_color
     self.contents.draw_text(x + 28, y, 180, 32, item.name)
     self.contents.draw_text(x + 228, y, 32, 32, recipe["target"]["number"].to_s, 2)
     self.contents.font.color = normal_color
   end
 
-  # 检查是否可以合成
-  def can_craft?(recipe)
-    $game_craft.can_craft?(recipe)
-  end
 
   # 刷新帮助文本
   def update_help
@@ -73,10 +69,10 @@ class Window_CraftList < Window_Selectable
     super
     if Input.trigger?(Input::C)
       recipe = @recipes[self.index]
-      if recipe && !can_craft?(recipe)
+      if recipe && !$game_craft.can_craft?(recipe)
         $game_system.se_play($data_system.buzzer_se)
         return
-      elsif recipe && can_craft?(recipe)
+      elsif recipe && $game_craft.can_craft?(recipe)
         $game_system.se_play($data_system.decision_se)
         # 显示 Window_CraftNumber 的逻辑
         # 这里需要确保只有在项可合成的情况下才执行显示逻辑
