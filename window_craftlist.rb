@@ -61,7 +61,19 @@ class Window_CraftList < Window_Selectable
 
   # 刷新帮助文本
   def update_help
-    @help_window.set_text(self.recipe == nil ? "" : self.recipe["target"]["name"])
+    if self.recipe
+      case self.recipe["target"]["kind"]
+      when :item
+        item = $data_items[self.recipe["target"]["id"]]
+      when :weapon
+        item = $data_weapons[self.recipe["target"]["id"]]
+      when :armor
+        item = $data_armors[self.recipe["target"]["id"]]
+      end
+      @help_window.set_text(item ? item.description : "")
+    else
+      @help_window.set_text("")
+    end
   end
 
   # 更新
