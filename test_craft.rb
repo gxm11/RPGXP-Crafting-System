@@ -8,20 +8,20 @@ load "window_craftnumber.rb"
 load "window_craftstatus.rb"
 
 $game_craft = Game_Craft.new
-$game_craft.add_recipe do
-  create :item, 1, 2
-  consume :item, 2, 10
-  consume :item, 3, 5
+$game_craft.add_recipe do |craft|
+  craft.create :item, 1, 2
+  craft.consume :item, 2, 10
+  craft.consume :item, 3, 5
 end
-$game_craft.add_recipe do
-  create :weapon, 2, 1
-  consume :item, 2, 20
-  consume :weapon, 3, 10
+$game_craft.add_recipe do |craft|
+  craft.create :weapon, 2, 1
+  craft.consume :item, 2, 20
+  craft.consume :weapon, 3, 10
 end
-$game_craft.add_recipe do
-  create :armor, 2, 1
-  consume :item, 2, 20
-  consume :armor, 3, 10
+$game_craft.add_recipe do |craft|
+  craft.create :armor, 2, 1
+  craft.consume :item, 2, 20
+  craft.consume :armor, 3, 10
 end
 
 class Interpreter
