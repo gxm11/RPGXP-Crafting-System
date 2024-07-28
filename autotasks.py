@@ -32,9 +32,14 @@ s += ['enter', 'sleep,1']
 s = data['craft'] = []
 s += ['enter', 'sleep,0.5', 'capture']
 # 进入Scene_Craft
-s += ['sleep,0.5', 'enter', 'sleep,0.5', 'capture']
-s += ['enter', 'sleep,0.5', 'capture']
-s += ['esc', 'sleep,0.5', 'capture']
-# 其他菜单操作
-s += ['right', 'sleep,0.5', 'enter', 'sleep,0.5', 'capture', 'esc']
-s += ['right', 'sleep,0.5', 'enter']
+s += ['sleep,0.5', 'capture']
+# 合成6个小回复剂
+s += ['enter', 'enter', 'right', 'right', 'capture', 'enter', 'capture']
+# 合成1个回复药剂
+s += ['down', 'enter', 'capture', 'enter', 'capture']
+# 离开物品合成
+s += ['esc']
+# 前往装备合成
+s += ['right', 'enter', 'capture']
+# 离开装备合成
+s += 'esc right enter'.split()

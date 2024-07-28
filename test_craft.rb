@@ -20,6 +20,7 @@ end
 $game_craft.add_recipe do |craft|
   craft.create :weapon, 2, 1
   craft.consume :weapon, 1, 2
+  craft.consume :item, 2, 2
 end
 
 class Interpreter
