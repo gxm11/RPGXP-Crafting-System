@@ -1,5 +1,6 @@
 # 在进入地图的瞬间，执行的自动事件。
 # 在此处亦可进入新的场景。
+load "game_craft.rb"
 load "scene_craft.rb"
 load "window_craftcommand.rb"
 load "window_craftlist.rb"
