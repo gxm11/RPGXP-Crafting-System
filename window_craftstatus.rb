@@ -42,7 +42,7 @@ class Window_CraftStatus < Window_Base
                    when :armor
                      $game_party.armor_number(@recipe["target"]["id"])
                    end
-    self.contents.draw_text(224, 32, 64, 32, owned_number.to_s, 2)
+    self.contents.draw_text(224, 32, 64, 32, "+#{@recipe['target']['number']}/#{owned_number}", 2)
     self.contents.font.color = system_color
     self.contents.draw_text(4, 64, 200, 32, "消耗")
     self.contents.font.color = normal_color
